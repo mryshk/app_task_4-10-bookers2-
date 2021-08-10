@@ -24,10 +24,11 @@
         </div>
 
       <h2 class="mt-3">New Book</h2>
-      <% form_with model :@book local:true do |f| %>
+      <%= form_with model: @book, local:true do |f| %>
        <%= f.text_field :title %>
        <%= f.text_area :body %>
        <%= f.submit "Create Book"%>
+      <% end %>
     </div>
 
     <div class="col-md-8 offset-md-1">

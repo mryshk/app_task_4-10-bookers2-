@@ -11,7 +11,7 @@
     <tbody>
       <% @users.each do |user|%>
       <tr>
-        <th><%= attachment_image_tag user, :iprofile_image %></th>
+        <th><%= attachment_image_tag user, :profile_image %></th>
         <th><%= user.name %></th>
         <th><%= link_to "show", user_path(user.id) %> </th>
       </tr>
