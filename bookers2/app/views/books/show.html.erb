@@ -1,47 +1,8 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-3">
-      <h2>User info</h2>
-      <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-      <table>
-        <tbody>
-          <tr>
-            <th>name</th>
-            <th><%= @user.name %></th>
-          </tr>
-          <tr>
-            <th>intoduction</th>
-            <th><%= @user.introduction %></th>
-          </tr>
-        </tbody>
-      </table>
-        <div class="row">
-        <% if @user.id == current_user.id %>
-          <%= link_to "edit", edit_user_path(@user)%>
-        <% else %>
-          <%= link_to "edit", user_path(current_user.id)%>
-        <% end %>
-        </div>
+<%= render 'users/list',user: @user, book: @book_s %>
 
-      <h2 class="mt-3">New Book</h2>
-      <%= form_with model: @book_s, local:true do |f| %>
-       <div>
-        <label for="form-groupe">Title</label>
-        <%= f.text_field :title %>
-      </div>
-      <div>
-        <label for="form-groupe">Opinion</label>
-        <%= f.text_area :body %>
-      </div>
-      <div>
-        <%= f.submit "Create Book"%>
-      </div>
-      <% end %>
-    </div>
-
-    <div class="col-md-8 offset-md-1">
+    <div class="col-md-8 offset-md-1 mt-3">
       <h2>Book detail</h2>
-      <table class="table">
+      <table class="table table-striped">
        <tbody>
          <tr>
           <td>
