@@ -1,10 +1,12 @@
-<div class="container">
+
+<div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
       <h2>User info</h2>
       <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-      <table>
+      <table class="table">
         <tbody>
+          <tr></tr>
           <tr>
             <th>name</th>
             <th><%= @user.name %></th>
@@ -17,25 +19,34 @@
       </table>
         <div class="row">
         <% if @user.id == current_user.id %>
-          <%= link_to edit_user_path(@user)%>
+          <%= link_to "edit", edit_user_path(@user)%>
         <% else %>
-          <%= link_to user_path(current_user.id)%>
+          <%= link_to "edit", user_path(current_user.id)%>
         <% end %>
         </div>
 
       <h2 class="mt-3">New Book</h2>
       <%= form_with model: @book, local:true do |f| %>
-       <%= f.text_field :title %>
-       <%= f.text_area :body %>
-       <%= f.submit "Create Book"%>
+       <div>
+        <label for="form-groupe">Title</label>
+        <%= f.text_field :title %>
+      </div>
+      <div>
+        <label for="form-groupe">Opinion</label>
+        <%= f.text_area :body %>
+      </div>
+      <div>
+        <%= f.submit "Create Book"%>
+      </div>
       <% end %>
     </div>
 
     <div class="col-md-8 offset-md-1">
       <h2>Books</h2>
-      <table>
+      <table class="table table-hover table-inverse">
         <thead>
           <tr>
+            <th></th>
             <th>Title</th>
             <th>Opinion</th>
             <th colspan="3"></th>
@@ -45,8 +56,11 @@
         <tbody>
           <% @books.each do |book| %>
           <tr>
-            <th><%= attachment_image_tag book.user, :profile_image %></th>
-            <th><%= book.title %></th>
+            <th><%= attachment_image_tag book.user, :profile_image,:fill,100,100 %></th>
+            <th>
+              <%= link_to book_path(book.id) do %>
+              <%= book.title %></th>
+              <% end %>
             <th><%= book.body %></th>
           </tr>
           <% end %>
