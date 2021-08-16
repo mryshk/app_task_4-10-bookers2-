@@ -36,3 +36,9 @@ ActiveRecord::Schema.define(version: 2021_08_16_091147) do
   end
 
 end
+
+
+#rails db:migrateが行えません。
+#rails db:migrateをした後にカラムを変更した場合,
+#「データベースには前回のカラムが残っているが、migrationファイルには存在しない」といった事態が起こります。
+#migrationファイルを見返し、必要なカラムが全て揃うように編集、追加をお願いいたします。
