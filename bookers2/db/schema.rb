@@ -10,12 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_16_091147) do
+ActiveRecord::Schema.define(version: 2021_08_21_003925) do
+
+  create_table "book_comments", force: :cascade do |t|
+    t.text "comment"
+    t.integer "user_id"
+    t.integer "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "books", force: :cascade do |t|
     t.integer "user_id"
     t.string "title"
     t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "book_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -36,9 +51,3 @@ ActiveRecord::Schema.define(version: 2021_08_16_091147) do
   end
 
 end
-
-
-#rails db:migrateが行えません。
-#rails db:migrateをした後にカラムを変更した場合,
-#「データベースには前回のカラムが残っているが、migrationファイルには存在しない」といった事態が起こります。
-#migrationファイルを見返し、必要なカラムが全て揃うように編集、追加をお願いいたします。
