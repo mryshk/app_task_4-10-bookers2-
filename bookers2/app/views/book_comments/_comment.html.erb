@@ -15,7 +15,7 @@
             <td><%= book_comment.comment %></td>
             <td><% if book_comment.user == current_user %>
               <button type="button" class="btn btn-danger">
-                <%= link_to "destroy", book_book_comment_path(book,book_comment),method: :delete ,class: "text-white", "data-confirm"=> "本当に消しますか？"%>
+                <%= link_to "destroy", book_book_comment_path(book,book_comment), method: :delete ,class: "text-white"%>
               </button>
               <% end %>
             </td>
