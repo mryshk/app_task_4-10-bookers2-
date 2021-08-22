@@ -5,9 +5,9 @@ class SearchController < ApplicationController
     @how = params["search"]["how"]
     @datas = search_for(@how, @model, @value)
   end
-  
+
   private
-  
+
   def match(model, value)
     if model == 'user'
       User.where(name: value)
@@ -15,7 +15,7 @@ class SearchController < ApplicationController
       Book.where(title: value)
     end
   end
-  
+
   def forward(model, value)
     if model == 'user'
       User.where("name LIKE ?", "#{value}%")
@@ -23,7 +23,7 @@ class SearchController < ApplicationController
       Book.where("title LIKE ?", "#{value}%")
     end
   end
-  
+
   def backward(model, value)
     if model == 'user'
       User.where("name LIKE ?", "%#{value}")
@@ -32,7 +32,7 @@ class SearchController < ApplicationController
     end
 
   end
-  
+
   def partical(model, value)
     if model == 'user'
       User.where("name LIKE ?", "%#{value}%")
@@ -40,7 +40,7 @@ class SearchController < ApplicationController
       Book.where("title LIKE ?", "%#{value}%")
     end
   end
-  
+
   def search_for(how, model, value)
     case how
     when 'match'
@@ -54,5 +54,5 @@ class SearchController < ApplicationController
     end
 
   end
-  
+
 end
