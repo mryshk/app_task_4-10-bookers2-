@@ -4,24 +4,19 @@ class BookCommentsController < ApplicationController
     @book_comment = BookComment.new(book_comment_params)
     @book_comment.user_id = current_user.id
     @book_comment.book_id = @book.id
-    respond_to do |format|
     if @book_comment.save
-      format.html { redirect_back(fallback_location: root_path) }
-      format.js
+     @book_comment = BookComment.new
     else
       @book_s = Book.new
       @user = User.find(@book.user_id)
       render :"books/show"
     end
-    end
   end
 
   def destroy
-    respond_to do |format|
+    @book = Book.find(params[:book_id])
     BookComment.find_by(book_id: params[:book_id],id: params[:id]).destroy
-    format.html { redirect_back(fallback_location: root_path) }
-    format.js
-    end
+    @book_comment = BookComment.new
   end
 
   private
