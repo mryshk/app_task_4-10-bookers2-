@@ -1,0 +1,5 @@
+<% if book.favorite_by?(current_user)%>
+  <p><%= link_to book_favorites_path(book), method: :delete, remote: true ,data: {"turbolinks" => false},class: "text-danger" do %><i class="fas fa-heart unlike-btn"></i><%= book.favorites.count %><% end %></p>
+<% else  %>
+  <p><%= link_to book_favorites_path(book), method: :post, remote: true, data: {"turbolinks" => false} do %><i class="fas fa-heart unlike-btn"></i><%= book.favorites.count %><% end %></p>
+<% end %>
