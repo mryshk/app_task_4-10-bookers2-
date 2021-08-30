@@ -1,0 +1,28 @@
+<div class="container px-5 px-sm-0">
+
+  <%= render 'users/list',user: @user, book: @book_s %>
+
+  <div class="col-md-8 offset-md-1 mt-3">
+    <h2>Group detail</h2>
+    <table class="table table-striped">
+     <thead>
+       <tr>
+         <th></th>
+         <th>グループ名</th>
+         <th>紹介文 </th>
+         <th></th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+        <td>
+         <div><%= attachment_image_tag @group,:image,:fill,50,50 %></div>
+        </td>
+        <td><%= @group.name %></td>
+        <td>
+        <%= @group.introduction %>
+        </td>
+        <td></td>
+     </tbody>
+    </table>
+</div>
