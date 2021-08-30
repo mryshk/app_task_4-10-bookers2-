@@ -25,6 +25,7 @@
           <%= link_to user_path(current_user.id) do %><li class="nav-item nav-link text-light"><i class="fas fa-home"></i>&nbsp;Home</li><% end %>
           <%= link_to users_path do %><li class="nav-item nav-link text-light"><i class="fas fa-users"></i>&nbsp;Users</li><% end %>
           <%= link_to books_path do %><li class="nav-item nav-link text-light"><i class="fas fa-book-open"></i>&nbsp;Books</li><% end %>
+          <%= link_to groups_path do %><li class="nav-item nav-link text-light"><i class="fas fa-users"></i>&nbsp;Group</li><% end %>
           <%= link_to destroy_user_session_path, method: :delete do %><li class="nav-item nav-link text-light"><i class="fas fa-sign-out-alt"></i>&nbsp;logout</li><% end %>
           <% else %>
           <%= link_to root_path do %><li class="nav-item nav-link text-light"><i class="fas fa-home">&nbsp;Home</i></li><% end %>

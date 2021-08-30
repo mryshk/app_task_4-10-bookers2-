@@ -6,17 +6,17 @@
       <%= form_with model:@user, local:true do |f| %>
        <div>
         <div><label for="inputName">Name</label></div>
-        <div><%= f.text_field :name, placeholder:"名前" %></div>
+        <div><%= f.text_field :name, placeholder:"名前" , class: "form-control" %></div>
        </div>
        <div>
         <div><label for="inputImage">Image</label></div>
-        <div><%= f.attachment_field :profile_image, placeholder: "image" %></div>
+        <div><%= f.attachment_field :profile_image, placeholder: "image", class: "form-control-file"  %></div>
        </div>
        <div>
         <div><label for="inputIntroduction">Introduction</label></div>
-         <div><%= f.text_area :introduction %></div>
+         <div><%= f.text_area :introduction , class: "form-control" %></div>
        </div>
-        <%= f.submit "Update User" %>
+       <button class="btn btn-success mt-2"><% f.submit %>Update User</button>
       <% end %>
     </div>
   </div>

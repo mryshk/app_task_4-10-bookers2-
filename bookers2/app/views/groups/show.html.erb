@@ -16,7 +16,7 @@
      <tbody>
        <tr>
         <td>
-         <div><%= attachment_image_tag @group,:image,:fill,50,50 %></div>
+         <div><%= attachment_image_tag @group,:image,:fill,100,100,format: 'jpeg', fallback: "no_image.jpg",size: '50x50'%></div>
         </td>
         <td><%= @group.name %></td>
         <td>
