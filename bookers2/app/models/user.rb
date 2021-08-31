@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :group_users
   has_many :groups,through: :group_users
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
 
 
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
@@ -30,6 +32,10 @@ class User < ApplicationRecord
 
   def followings?(user)
     followings.include?(user)
+  end
+
+  def followed_by?(user)
+    followers.include?(user)
   end
 
 
