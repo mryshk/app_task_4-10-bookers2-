@@ -28,11 +28,14 @@
             <div><%= group_user.name %></div>
           <% end %>
         </td>
-        <td>
-            <% if @group.joined_by?(current_user) %>
-               <button class="btn btn-danger text-white"><%= link_to group_group_user_path(@group.id), method: :delete, class: "text-white" do %>Leave this group<% end %></button>
-             <% else %>
+        <td><%  unless current_user.id == @group.owner_id %>
+              <% if @group.joined_by?(current_user) %>
+                <button class="btn btn-danger text-white"><%= link_to group_group_user_path(@group.id), method: :delete, class: "text-white" do %>Leave this group<% end %></button>
+              <% else %>
                 <button class="btn btn-primary text-white"><%= link_to group_group_users_path(@group.id), method: :post, class: "text-white" do %>Join this group<% end %></button>
+              <% end %>
+            <% else %>
+              <button class="btn btn-info ">Notice an Event</button>
             <% end %>
         </td>
      </tbody>
