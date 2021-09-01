@@ -2,35 +2,8 @@
   <% @entry2.each do |e|  %>
   <h1><%= e.user.name %>さんとのチャット</h1>
   <% end %>
-  <div class="row mt-4">
-    <div class="col-md-8 offset-md-1 mt-3 pr-4">
-　　　　<div class="chats">
-　　　　　　<div class="chat">
-　　　　　　  <% if @messages.present? %>
-　　　　　　    <% @messages.each do |m| %>
-　　　　　　      <div class="chat-box">
-　　　　　　        <div class="chat-face d-inline">
-　　　　　　          <%= attachment_image_tag m.user,:profile_image,:fill,100,100, fallback: "no_image.jpg",size: '40x40' ,class: "user-image" %>
-　　　　　　        </div>
-　　　　　　        <div class="chat-hukidashi d-inline"> <strong><%= m.content %></strong> <br>
-　　　　　　        </div>
-　　　　　　      </div>
-　　　　　　    <% end %>
-　　　　　　  <% end %>
-　　　　　　</div>
-　　　　　　<div class="posts">
-　　　　　　  <div class="d-inline">
-　　　　　　    <%= form_with model: @message, local: true do |f| %>
-　　　　　　    <%= f.text_field :content, placeholder: "Message" , class: "form-inline form-control",size: "30" %>
-　　　　　　      <%= f.hidden_field :room_id, value: @room.id ,class: "form-inline" %>
-　　　　　　  </div>
-　　　　　　  <button class=" btn btn-info btn-sm"　type="submit"><i class="fab fa-telegram-plane"><%f.submit %></i>
-　　　　　　  </button>
-　　　　　　<% end %>
-　　　　　　</div>
-　　　　</div>
-    </div>
-  </div>
+  <%= render "rooms/message", messages: @messages, message: @message,room: @room  %>
+
   <div class="left-button">
     <%= link_to "ユーザー一覧に戻る", users_path ,class:"edit-link" %>
   </div>

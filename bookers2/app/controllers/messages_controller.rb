@@ -6,7 +6,10 @@ class MessagesController < ApplicationController
     else
       flash[:alert] = "メッセージ送信に失敗しました。"
     end
-    redirect_to "/rooms/#{@message.room_id}"
+    @roomID = @message.room_id
+    @room = Room.find_by(id: @roomID)
+    @messages =  @room.messages
+    @message = Message.new
   end
 
   private
