@@ -10,13 +10,15 @@
                       </div>
                     </div>
                   <% else %>
-                    <div class="sb-bubble sb-line1 sb-leftmt-2">
-                      <div class="d-inline ">
-                        <%= link_to user_path(m.user) do %>
-                          <%= attachment_image_tag m.user,:profile_image,:fill,40,40, fallback: "no_image.jpg",size: '40x40' ,class: "user-image" %>
-                        <% end %>
+                    <div class="d-inline ">
+                          <%= link_to user_path(m.user) do %>
+                            <%= attachment_image_tag m.user,:profile_image,:fill,40,40, fallback: "no_image.jpg",size: '40x40' ,class: "user-image" %>
+                          <% end %>
+                    </div>
+                    <div class="speech-bubble">
+                      <div class="sb-bubble sb-line1 sb-left mt-2">
+                        <strong><%= m.content %></strong>
                       </div>
-                      <strong><%= m.content %></strong>
                     </div>
                   <% end %>
                 <% end %>
