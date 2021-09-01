@@ -1,33 +1,35 @@
-      <div class="col-10  mt-3 ">
-  　　　　<div class="chats">
-  　　　　　　<div class="chat">
+      <div class="col-6 mt-3 ">
+        <div class="chats">
+            <div class="chat">
               <% if messages.present? %>
-              <table>
                 <% messages.each do |m| %>
-                <tbody>
-                  <tr>
-                    <td>
-                      <%= link_to user_path(m.user) do %>
-  　　　　　　            <%= attachment_image_tag m.user,:profile_image,:fill,40,40, fallback: "no_image.jpg",size: '40x40' ,class: "user-image" %>
-  　　　　　　          <% end %>
-                    </td>
-                    <td><strong><%= m.content %></strong></td>
-                  </tr>
-                </tbody>
+                  <% if m.user_id == current_user.id  %>
+                    <div class="speech-bubble">
+                      <div class="sb-bubble sb-line1 sb-right mt-2" style="text-align:right;">
+                        <strong><%= m.content %></strong>
+                      </div>
+                    </div>
+                  <% else %>
+                    <div class="sb-bubble sb-line1 sb-leftmt-2">
+                      <div class="d-inline ">
+                        <%= link_to user_path(m.user) do %>
+                          <%= attachment_image_tag m.user,:profile_image,:fill,40,40, fallback: "no_image.jpg",size: '40x40' ,class: "user-image" %>
+                        <% end %>
+                      </div>
+                      <strong><%= m.content %></strong>
+                    </div>
+                  <% end %>
                 <% end %>
-              </table>
               <% end %>
-  　　　　　　</div>
-  　　　　　　<div class="posts">
-  　　　　　　  <div class="">
-  　　　　　　    <%= form_with model: message do |f| %>
-  　　　　　　    <%= f.text_field :content, placeholder: "Message" , class: "form-inline form-control",size: "30" %>
-  　　　　　　      <%= f.hidden_field :room_id, value: room.id  %>
-  　　　　　　  </div>
-  　　　　　　  <button class=" btn btn-info btn-sm"　type="submit"><i class="fab fa-telegram-plane"><%f.submit %></i>
-  　　　　　　  </button>
-  　　　　　　<% end %>
-  　　　　　　</div>
-  　　　　</div>
+            </div>
+            <div class="posts mt-4 mb-5">
+              <div>
+                <%= form_with model: message do |f| %>
+                <%= f.text_field :content, placeholder: "Message" , class: "form-inline form-control",size: "30" %>
+                <%= f.hidden_field :room_id, value: room.id  %>
+              </div>
+              <button class=" btn btn-info btn-sm ml-4"　type="submit"><i class="fab fa-telegram-plane"><%f.submit %></i></button>
+              <% end %>
+            </div>
+        </div>
       </div>
-  
