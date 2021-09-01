@@ -2,10 +2,12 @@
   <% @entry2.each do |e|  %>
   <h1><%= e.user.name %>さんとのチャット</h1>
   <% end %>
-  <%= render "rooms/message", messages: @messages, message: @message,room: @room  %>
-
+  <div class="row mt-4  justify-content-center" id="message">
+    <%= render "rooms/message", messages: @messages, message: @message,room: @room  %>
+  </div>
   <div class="left-button">
     <%= link_to "ユーザー一覧に戻る", users_path ,class:"edit-link" %>
   </div>
+
 </div>
 

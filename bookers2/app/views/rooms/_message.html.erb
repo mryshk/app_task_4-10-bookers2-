@@ -1,5 +1,4 @@
- <div class="row mt-4" id="message">
-    <div class="col-md-8 offset-md-1 mt-3 pr-4">
+    <div class="col-10  mt-3 ">
 　　　　<div class="chats">
 　　　　　　<div class="chat">
 　　　　　　  <% if messages.present? %>
@@ -16,7 +15,7 @@
 　　　　　　</div>
 　　　　　　<div class="posts">
 　　　　　　  <div class="d-inline">
-　　　　　　    <%= form_with model: message  o |f| %>
+　　　　　　    <%= form_with model: message do |f| %>
 　　　　　　    <%= f.text_field :content, placeholder: "Message" , class: "form-inline form-control",size: "30" %>
 　　　　　　      <%= f.hidden_field :room_id, value: room.id ,class: "form-inline" %>
 　　　　　　  </div>
@@ -26,4 +25,3 @@
 　　　　　　</div>
 　　　　</div>
     </div>
-  </div>
