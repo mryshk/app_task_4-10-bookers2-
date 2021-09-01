@@ -1,16 +1,9 @@
 <div class="container">
-  <h1>チャット</h1>
+  <% @entry2.each do |e|  %>
+  <h1><%= e.user.name %>さんとのチャット</h1>
+  <% end %>
   <div class="row mt-4">
     <div class="col-md-8 offset-md-1 mt-3 pr-4">
-      <% @entries.each do |e| %>
-　　　　<div class="user-name">
-　　　　　　<strong>
-　　　　　　  <a class="rooms-user-link" href="/users/<%= e.user.id %>">
-　　　　　　    <%= e.user.name %>さん
-　　　　　　  </a>
-　　　　　　</strong>
-　　　　</div>
-　　　　<% end %>
 　　　　<div class="chats">
 　　　　　　<div class="chat">
 　　　　　　  <% if @messages.present? %>
