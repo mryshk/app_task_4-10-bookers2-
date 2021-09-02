@@ -12,4 +12,6 @@ def favorite_by?(user)
 
 end
 
+is_impressionable counter_cache: true
+
 end
