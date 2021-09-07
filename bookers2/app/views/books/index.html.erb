@@ -1,12 +1,9 @@
 <div class="container px-5 px-sm-0">
-<%= render 'layouts/errors',obj: @book %>
-
-<%= render 'layouts/header',user: @user%>
-
-<%= render 'users/list',user: @user, book: @book %>
-
-
-<div class="col-md-8 offset-md-1 mt-3 pr-4">
+  <%= render 'layouts/errors',obj: @book %>
+  <%= render 'layouts/header',user: @user%>
+  <div class="row ml-3">
+    <%= render 'users/list',user: @user, book: @book %>
+    <div class="col-md-8 offset-md-1 mt-3 pr-4">
       <h2>Books</h2>
       <table class="table table-hover table-inverse">
         <thead>
@@ -20,7 +17,6 @@
             <th>閲覧数</th>
           </tr>
         </thead>
-
         <tbody>
           <% @books.each do |book| %>
           <td>
@@ -43,6 +39,4 @@
       </table>
     </div>
   </div>
-</div>
-
 </div>
