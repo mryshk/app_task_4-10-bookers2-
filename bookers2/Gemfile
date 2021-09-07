@@ -79,3 +79,5 @@ gem 'rspec-rails'
 gem "factory_bot_rails"
 gem 'faker'
 gem 'impressionist', '~>1.6.1'
+
+gem "chartkick"
