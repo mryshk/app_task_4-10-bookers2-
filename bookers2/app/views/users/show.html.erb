@@ -81,9 +81,16 @@
           </thead>
           <tbody>
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td><%= @book_this_week.count %></td>
+              <td><%= @book_last_week.count %></td>
+              <td>
+                <% if @book_last_week.count == 0 %>
+                  <p>0</p>
+                <% else %>
+                  <% @week_ratio = @book_this_week.count / @book_last_week.count.to_f %>
+                  <%= (@week_ratio * 100).round(2) %>
+                <% end %>
+              </td>
             </tr>
           </tbody>
         </table>

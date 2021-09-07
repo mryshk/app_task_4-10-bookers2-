@@ -5,6 +5,8 @@ class UsersController < ApplicationController
     @books = @user.books.all
     @book_today = @books.created_today
     @book_yesterday = @books.created_yesterday
+    @book_this_week = @books.created_this_week
+    @book_last_week = @books.created_last_week
 
     @currentUserEntry = Entry.where(user_id: current_user.id)
     @userEntry = Entry.where(user_id: @user.id)
