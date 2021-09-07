@@ -1,7 +1,7 @@
 <div class="container px-5 px-sm-0">
-<%= render 'users/list',user: @user, book: @book %>
-
-<div class="col-md-8 offset-md-1 mt-3 pr-4">
+  <div class="row ml-3">
+    <%= render 'users/list',user: @user, book: @book %>
+    <div class="col-md-8 offset-md-1 mt-3 pr-4">
       <h2>Books</h2>
       <table class="table table-hover table-inverse">
         <thead>
@@ -12,7 +12,6 @@
             <th colspan="3"></th>
           </tr>
         </thead>
-
         <tbody>
           <% @books.each do |book| %>
           <td>
@@ -46,7 +45,49 @@
         <% end %>
         <% end %>
       <% end %>
+      <div class="table-width mt-4">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>今日の投稿数</th>
+              <th>前日の投稿数</th>
+              <th>前日比</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @book_today.count %></td>
+              <td><%= @book_yesterday.count %></td>
+              <td>
+                <% if @book_yesterday.count == 0 %>
+                  <p>0</p>
+                <% else %>
+                  <% @day_before_ratio = @book_today.count / @book_yesterday.count.to_f %>
+                  <%= (@day_before_ratio * 100).round(2) %>
+                <% end %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-width mt-4">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>今週の投稿数</th>
+              <th>前週の投稿数</th>
+              <th>前週比</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
 </div>

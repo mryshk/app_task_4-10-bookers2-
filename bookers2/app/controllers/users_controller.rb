@@ -3,6 +3,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @book = Book.new
     @books = @user.books.all
+    @book_today = @books.created_today
+    @book_yesterday = @books.created_yesterday
+
     @currentUserEntry = Entry.where(user_id: current_user.id)
     @userEntry = Entry.where(user_id: @user.id)
     unless @user.id == current_user.id
