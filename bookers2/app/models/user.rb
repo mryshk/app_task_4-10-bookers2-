@@ -39,7 +39,7 @@ class User < ApplicationRecord
   end
 
 
-
+  scope :created_this_week, -> {where(created_at: 6.day.ago.beginning_of_day..Time.zone.now.end_of_day)}
 
   attachment :profile_image
 
