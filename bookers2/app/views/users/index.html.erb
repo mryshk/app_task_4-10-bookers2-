@@ -1,7 +1,7 @@
 <div class="container px-5 px-sm-0">
-<%= render 'layouts/header', user: @user %>
-<%= render 'users/list',user: @user, book: @book %>
-
+  <%= render 'layouts/header', user: @user %>
+  <div class="row mt-3">
+    <%= render 'users/list',user: @user, book: @book %>
     <div class="col-md-8 offset-md-1 mt-3 pr-4">
       <h2>Users</h2>
       <span><%= link_to "グループを作成する", new_group_path %></span>
@@ -38,5 +38,4 @@
       </table>
     </div>
   </div>
-</div>
 </div>
