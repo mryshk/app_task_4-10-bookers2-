@@ -21,10 +21,12 @@
           <% end %>
           </td>
           <td><%= @book.body %></td>
+          <td><%= @book.category %></td>
           <td id ="book_favorites_<%= @book.id %>">
             <%= render "favorites/favorite", book: @book %>
           </td>
           <td>コメント数:<%= @book.book_comments.count %></td>
+          <td class="book_rate_<%= @book.id  %>" data-score="<%= @book.rate %>"></td>
           <td>閲覧数:<%= @book.impressions_count %></td>
 
           <% if @book.user_id == current_user.id %>
@@ -32,6 +34,16 @@
            <td><span class="btn btn-sm btn-danger btn-sm"><%= link_to "Destroy", book_path(@book),method: :delete, "data-confirm"=> "Do you really want to delete this book？" %></span></td>
           <% end %>
        </tbody>
+       <script>
+          $('.book_rate_<%= @book.id  %>').empty();
+            $('.book_rate_<%= @book.id  %>').raty({
+              readOnly: true,
+              score: function(){
+                return $(this).attr('data-score');
+              },
+              path: '/assets/'
+            });
+          </script>
       </table>
       <div id ="book_comments_index" >
       　<%= render "book_comments/comment", book: @book, book_comment: @book_comment %>
