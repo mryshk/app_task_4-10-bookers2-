@@ -15,7 +15,7 @@
 //= require bootstrap-sprockets
 
 //= require rails-ujs
-
+//= require jquery.raty.js
 //= require chartkick
 //= require Chart.bundle
 

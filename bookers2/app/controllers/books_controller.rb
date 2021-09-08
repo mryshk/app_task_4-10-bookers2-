@@ -12,7 +12,7 @@ impressionist :actions=> [:show,:index]
 
   def index
     @book = Book.new
-    @books = Book.includes(:favorited_users).sort{|a,b| b.favorited_users.includes(:favorites).size <=> a.favorited_users.includes(:favorites).created_this_week.size }
+    @books = Book.includes(:favorited_users).sort{|a,b| b.favorited_users.includes(:favorites).created_this_week.size <=> a.favorited_users.includes(:favorites).created_this_week.size }
     @books_regular = Book.all
     @rank_books = Book.order(impressions_count: "DESC")
     @user = User.find(current_user.id)
@@ -59,7 +59,7 @@ impressionist :actions=> [:show,:index]
   private
 
   def book_params
-    params.require(:book).permit(:title,:body)
+    params.require(:book).permit(:title,:body,:rate,:category)
   end
 
 
