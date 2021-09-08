@@ -1,38 +1,41 @@
 <div class="container px-5 px-sm-0">
   <%= render 'layouts/errors',obj: @book_comment%>
+  <div class="row mt-3">
 
-  <%= render 'users/list',user: @user, book: @book_s %>
+    <%= render 'users/list',user: @user, book: @book_s %>
+    <div class="col-md-8 offset-md-1 mt-3">
+      <h2>Book detail</h2>
+      <table class="table table-striped">
+       <tbody>
+         <tr>
+          <td>
+           <div><%= attachment_image_tag @book.user,:profile_image,:fill,50,50 %></div>
+           <div><%= link_to user_path(@book.user_id) do %>
+           <%= @book.user.name %>
+           <% end %>
+           </div>
+          </td>
+          <td>
+          <%= link_to book_path(@book) do %>
+          <%= @book.title %>
+          <% end %>
+          </td>
+          <td><%= @book.body %></td>
+          <td id ="book_favorites_<%= @book.id %>">
+            <%= render "favorites/favorite", book: @book %>
+          </td>
+          <td>コメント数:<%= @book.book_comments.count %></td>
+          <td>閲覧数:<%= @book.impressions_count %></td>
 
-  <div class="col-md-8 offset-md-1 mt-3">
-    <h2>Book detail</h2>
-    <table class="table table-striped">
-     <tbody>
-       <tr>
-        <td>
-         <div><%= attachment_image_tag @book.user,:profile_image,:fill,50,50 %></div>
-         <div><%= link_to user_path(@book.user_id) do %>
-         <%= @book.user.name %>
-         <% end %>
-         </div>
-        </td>
-        <td>
-        <%= link_to book_path(@book) do %>
-        <%= @book.title %>
-        <% end %>
-        </td>
-        <td><%= @book.body %></td>
-        <td id ="book_favorites_<%= @book.id %>">
-          <%= render "favorites/favorite", book: @book %>
-        </td>
-        <td>コメント数:<%= @book.book_comments.count %></td>
-        <td>閲覧数:<%= @book.impressions_count %></td>
-
-        <% if @book.user_id == current_user.id %>
-         <td><span class="btn btn-sm btn-success btn-sm"><%= link_to "Edit", edit_book_path(@book)%></span></td>
-         <td><span class="btn btn-sm btn-danger btn-sm"><%= link_to "Destroy", book_path(@book),method: :delete, "data-confirm"=> "Do you really want to delete this book？" %></span></td>
-        <% end %>
-     </tbody>
-    </table>
-    <div id ="book_comments_index" >
-    　<%= render "book_comments/comment", book: @book, book_comment: @book_comment %>
+          <% if @book.user_id == current_user.id %>
+           <td><span class="btn btn-sm btn-success btn-sm"><%= link_to "Edit", edit_book_path(@book)%></span></td>
+           <td><span class="btn btn-sm btn-danger btn-sm"><%= link_to "Destroy", book_path(@book),method: :delete, "data-confirm"=> "Do you really want to delete this book？" %></span></td>
+          <% end %>
+       </tbody>
+      </table>
+      <div id ="book_comments_index" >
+      　<%= render "book_comments/comment", book: @book, book_comment: @book_comment %>
+      </div>
     </div>
+  </div>
+</div>
