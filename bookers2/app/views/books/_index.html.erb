@@ -1,4 +1,4 @@
-
+     <%# 詳細テーブル %>
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
@@ -16,14 +16,20 @@
         <tbody>
           <% books.each do |book| %>
           <td>
+            <%# ユーザー画像 %>
             <td><%= link_to user_path(book.user_id) do %><%= attachment_image_tag book.user, :profile_image,:fill,100,100,format: 'jpeg', fallback: "no_image.jpg",size: '40x40' %>
              <% end %>
             </td>
+            <%# タイトル　詳細へのリンク付き %>
             <td>
               <%= link_to book_path(book.id) do %>
               <%= book.title %></td>
               <% end %>
+
+            <%#　本の説明  %>
             <td><%= book.body %></td>
+
+            <%# カテゴリー　絞り込みリンク付き %>
             <td>
               <% unless book.category.nil?  %>
                 <%= link_to search_category_path(category: book.category) do %>
@@ -31,13 +37,19 @@
                 <% end %>
               <% end %>
             </td>
+
+            <%# ファボ数 %>
             <td id ="book_favorites_<%= book.id %>">
               <%= render 'favorites/favorite',book: book %>
             </td>
+            <%# コメント数 %>
             <td><%= book.book_comments.count %></td>
+            <%# ランク数 %>
             <td class="book_rate_<%= book.id  %>" data-score="<%= book.rate %>"></td>
+            <%# 閲覧数 %>
             <td><%= book.impressions_count %></td>
           </tr>
+          <%# jquery.raty.js %>
           <script>
           $('.book_rate_<%= book.id  %>').empty();
             $('.book_rate_<%= book.id  %>').raty({

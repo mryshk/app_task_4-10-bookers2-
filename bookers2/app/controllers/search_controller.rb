@@ -1,4 +1,6 @@
 class SearchController < ApplicationController
+
+  #　検索バー検索
   def search
     @model = params["search"]["model"]
     @value = params["search"]["value"]
@@ -6,16 +8,17 @@ class SearchController < ApplicationController
     @datas = search_for(@how, @model, @value)
   end
 
+  # カテゴリー検索
   def search_category
     @category = params[:category]
     @books = Book.where(category: @category)
-    
+
     @book = Book.new
     @user = User.find(current_user.id)
     render template: "books/index"
   end
-  
-  
+
+
   private
 
   def match(model, value)
