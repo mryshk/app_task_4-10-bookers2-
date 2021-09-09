@@ -69,7 +69,8 @@
 
     <label for="book_category">Category</label>
       <div><%= f.text_area :category, class: "form-control"  %></div>
-    <div id="book_rate">
+
+    <div class="mt-3" id="book_rate">
       <label for="book_rate">Rate</label>
     </div>
     <script>
@@ -81,8 +82,9 @@
         half: true,
       });
     </script>
-
-    <button class="btn btn-success mt-2"><% f.submit %>Create Book</button>
+    <div class="text-center">
+      <button class="btn btn-success mt-3 "><% f.submit %>Create Book</button>
+    </div>
     <% end %>
   </div>
 </div>
