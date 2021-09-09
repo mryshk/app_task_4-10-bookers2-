@@ -1,15 +1,18 @@
- <div class="col-md-8 offset-md-1 mt-3 pr-4">
       <h2>Books</h2>
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
             <th></th>
+            <th></th>
             <th>Title</th>
             <th>Opinion</th>
-            <th colspan="3"></th>
+            <th>Category</th>
+            <th>いいね数</th>
+            <th>コメント数</th>
+            <th>Rate</th>
+            <th>閲覧数</th>
           </tr>
         </thead>
-
         <tbody>
           <% books.each do |book| %>
           <td>
@@ -21,14 +24,24 @@
               <%= book.title %></td>
               <% end %>
             <td><%= book.body %></td>
-            <td id ="book_favorite">
-              <%= render 'favorites/favorite',book: book  %>
+            <td><%= book.category %></td>
+            <td id ="book_favorites_<%= book.id %>">
+              <%= render 'favorites/favorite',book: book %>
             </td>
-            <td>コメント数:<%= book.book_comments.count %></td>
+            <td><%= book.book_comments.count %></td>
+            <td class="book_rate_<%= book.id  %>" data-score="<%= book.rate %>"></td>
+            <td><%= book.impressions_count %></td>
           </tr>
+          <script>
+          $('.book_rate_<%= book.id  %>').empty();
+            $('.book_rate_<%= book.id  %>').raty({
+              readOnly: true,
+              score: function(){
+                return $(this).attr('data-score');
+              },
+              path: '/assets/'
+            });
+          </script>
           <% end %>
         </tbody>
       </table>
-    </div>
-  </div>
-</div>
