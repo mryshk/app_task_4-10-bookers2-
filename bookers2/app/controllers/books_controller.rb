@@ -18,11 +18,12 @@ impressionist :actions=> [:show,:index]
       @books = Book.order(creater_at: "DESC")
     elsif params[:sort_rate]
       @books= Book.order(rate: "DESC")
+    elsif params[:sort_rank]
+      @books = Book.order(impressions_count: "DESC")
     else
       @books = Book.includes(:favorited_users).sort{|a,b| b.favorited_users.includes(:favorites).created_this_week.size <=> a.favorited_users.includes(:favorites).created_this_week.size }
     end
     @books_regular = Book.all
-    @rank_books = Book.order(impressions_count: "DESC")
   end
 
   def create

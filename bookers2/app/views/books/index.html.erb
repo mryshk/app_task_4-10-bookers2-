@@ -5,7 +5,8 @@
   <%= render 'users/list',user: @user, book: @book %>
 
     <div class="col-md-8 offset-md-1 mt-3 pr-4">
-      
+      <h2>Books</h2>
+      <%= link_to "新しい順",books_path(sort_new: "true") %>｜<%= link_to "評価の高い順" ,books_path(sort_rate: "true") %>｜<%= link_to"閲覧数の多い順" , books_path(sort_rank: "true")%>
       <%= render "books/index", books: @books %>
     </div>
     <div class="col-md-10 offset-md-1 mt-3">
