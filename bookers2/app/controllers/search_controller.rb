@@ -9,7 +9,13 @@ class SearchController < ApplicationController
   def search_category
     @category = params[:category]
     @books = Book.where(category: @category)
-    render 'index'
+    
+    @book = Book.new
+    @user = User.find(current_user.id)
+    render template: "books/index"
+  end
+  
+  
   private
 
   def match(model, value)

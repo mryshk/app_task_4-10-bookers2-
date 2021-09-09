@@ -15,15 +15,14 @@ impressionist :actions=> [:show,:index]
     @user = User.find(current_user.id)
 
     if params[:sort_new]
-      @books = Book.order(creater_at: "DESC")
+      @books = Book.order(created_at: "desc")
     elsif params[:sort_rate]
       @books= Book.order(rate: "DESC")
     elsif params[:sort_rank]
       @books = Book.order(impressions_count: "DESC")
     else
-      @books = Book.includes(:favorited_users).sort{|a,b| b.favorited_users.includes(:favorites).created_this_week.size <=> a.favorited_users.includes(:favorites).created_this_week.size }
+      @books = Book.all
     end
-    @books_regular = Book.all
   end
 
   def create
