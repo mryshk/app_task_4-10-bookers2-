@@ -24,7 +24,11 @@
               <%= book.title %></td>
               <% end %>
             <td><%= book.body %></td>
-            <td><%= book.category %></td>
+            <td>
+              <%= link_to search_category_path(category: book.category) do %>
+                <%= book.category %>
+              <% end %>
+            </td>
             <td id ="book_favorites_<%= book.id %>">
               <%= render 'favorites/favorite',book: book %>
             </td>

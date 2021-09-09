@@ -6,6 +6,10 @@ class SearchController < ApplicationController
     @datas = search_for(@how, @model, @value)
   end
 
+  def search_category
+    @category = params[:category]
+    @books = Book.where(category: @category)
+    render 'index'
   private
 
   def match(model, value)

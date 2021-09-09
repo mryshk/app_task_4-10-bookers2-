@@ -58,6 +58,7 @@ impressionist :actions=> [:show,:index]
       render :edit
     end
   end
+
   def destroy
     book = Book.find(params[:id])
     book.destroy
