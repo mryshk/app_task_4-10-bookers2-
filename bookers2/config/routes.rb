@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get '/search' => 'search#search'
   get '/search/:category' => 'search#search_category',as: 'search_category'
+  get '/search_date' => 'search#search_date',as: 'search_date'
+
   get 'users/show'
   devise_for :users
   root to: 'homes#top'

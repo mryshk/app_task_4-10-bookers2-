@@ -14,6 +14,7 @@ impressionist :actions=> [:show,:index]
     @book = Book.new
     @user = User.find(current_user.id)
 
+
     if params[:sort_new]
       @books = Book.order(created_at: "desc")
     elsif params[:sort_rate]

@@ -18,6 +18,12 @@ class SearchController < ApplicationController
     render template: "books/index"
   end
 
+  def search_date
+    @date = params[:created_at]
+    @book_date = Book.where(created_at: @date.in_time_zone.all_day)
+    @book_count = @book_date.count
+  end
+
 
   private
 
